@@ -12,9 +12,9 @@ function generatePassword() {
 
   for (let index = 0; index < length; index = password.length) {
 
-    let tucola = Math.floor(Math.random() * 4) + 1
+    let randomizer = Math.floor(Math.random() * 4) + 1
 
-    switch (tucola) {
+    switch (randomizer) {
       case 1:
         if (incLower) password += getRandomLower();
         break;
