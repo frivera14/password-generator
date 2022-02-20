@@ -50,7 +50,7 @@ var inquiry = function () {
 
   if (characterAmount < 8 || characterAmount > 128) {
     window.alert("That's not a valid entry. Do it right this time.")
-    return generatePassword();
+    return inquiry();
   } else {
     askForLowerCase();
     length += characterAmount;
