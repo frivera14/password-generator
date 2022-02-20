@@ -4,18 +4,30 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 var length = 0;
+var incLower
+var incUpper
+var incNumbers
+var incSymbols
 
 function generatePassword() {
      
+ let password = ''
 
+ for (let index = 0; index < length; index = password.length) {
+   if (incLower) password += getRandomLower();
+   if (incUpper) password += getRandomUpper();
+   if (incNumbers) password += getRandomNumbers();
+   if (incSymbols) password += getRandomSymbols();
+   
+ }
   
   
-  return "The password goes here"
+  return password.substring(0, length)
 };
 
 
 var inquiry = function() {
-   characterAmount =  window.prompt("How many characters long would you like your password? Minimum is 8, max is 128.")
+  let characterAmount =  window.prompt("How many characters long would you like your password? Minimum is 8, max is 128.")
 
  
   if (characterAmount === "" || characterAmount === null) {
@@ -34,66 +46,61 @@ var inquiry = function() {
 };
 
 var askForLowerCase = function() {
-    answerLower = window.confirm("Would you like your password to include lower case letters?")
+  let  answerLower = window.confirm("Would you like your password to include lower case letters?")
 
     if (answerLower) {
       window.alert("Your password will contain lowercase letters!")
-      getRandomLower = true
-     askForUpperCase();
+      incLower = true
     } else {
       window.alert("No lower case for you.");
-     askForUpperCase();
-     getRandomLower = false
+      incLower = false
     }
+    askForUpperCase();
 };
 
   
 
 var askForUpperCase = function() {
-     answerUpper = window.confirm("Would you like upper case letters in your password?")
+  let   answerUpper = window.confirm("Would you like upper case letters in your password?")
 
     if (answerUpper) {
       window.alert("Your password will contain upper case letters!")
-      getRandomUpper = true
-      askForNumbers();      
+      incUpper = true      
     } else {
       window.alert("No upper case for you.")
-      askForNumbers();
-      getRandomUpper = false
+      incUpper = false
     }
+    askForNumbers();
 };
   
 
 var askForNumbers = function() {
-     answerNumbers = window.confirm("Do you want it to include numbers?")
+   let  answerNumbers = window.confirm("Do you want it to include numbers?")
 
     if (answerNumbers) {
       window.alert("Let's add some numbers!");
       incNumbers = true
-      askForSymbols();
       console.log(incNumbers)
 
     } else {
       window.alert("No numbers will be included.")
-      askForSymbols();
       incNumbers = false
     }
+  askForSymbols();
 };
 
 
 var askForSymbols = function() {
-    answerSymbols = window.confirm("Do you want special characters/symbols?");
+  let  answerSymbols = window.confirm("Do you want special characters/symbols?");
 
     if (answerSymbols) {
       window.alert("Let's get secure!")
       incSymbols = true
-      generatePassword();
-      console.log(incSymbols)
     } else {
       window.alert("No symbols will be added.");
-      generatePassword();
       incSymbols = false
     }
+  generatePassword();
 };
 
 inquiry();
